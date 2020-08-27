@@ -1,0 +1,98 @@
+
+/* DEVICES WHICH WIDTH 1024px TO 1200px */
+@media only screen and (max-width:1200px){
+    .hero-text-box {                   
+        width: 100%;
+        padding: 0 5%;
+    }
+    .row { padding: 0 2%; }
+    .main-nav { margin-right: 30px; }
+}
+
+/* DEVICES WHICH WIDTH 768px TO 1023px */
+@media only screen and (max-width:1023px){
+    body { font-size: 18px; }
+    section { padding: 60px 0; }
+    .section-intro {
+        width: 70%;
+        margin-left: 15%;
+    }
+    .button-app img {
+        height: 45px;
+        margin-right: 3%;
+    }
+    .phone-screen { width: 60%; }
+    .steps { margin: 3% 0 12% 0; }
+    .steps div { padding: 3%; }
+    .icon-small {
+        font-size: 145%;
+        margin-right: 1%;
+    }
+    h3 { font-size: 100%; }
+    h3:after { width: 15px; }
+    .city-feature { font-size: 80% }
+    .plan-price { font-size: 260%; }
+    span { font-size: 40%; }
+    .plan-specifications { font-size: 70%; }
+    .main-nav { 
+        margin: 45px 25px 0 0;
+        font-size: 110%;
+    }
+}
+
+/* DEVICES WHICH WIDTH 480px TO 767px */
+@media only screen and (max-width:767px){
+    body { font-size: 16px; }
+    section { padding 30px 0; }
+    .row .hero-text-box { padding: 0 4%}
+    .col { 
+        width: 100%;
+        margin: 0 0 4% 0;
+    }
+    .main-nav li { margin-left: 10px; font-size:13px; }
+    .main-nav { 
+        display: block; 
+        width:100%; 
+        text-align: center; 
+        margin: 35px 10px 0 0; 
+    }
+    .city-feature { font-size: 100%; }
+    h3 { font-size: 140% }
+    .steps div { padding: 2.5%; }
+    .phone-screen { width: 40%; }
+    .step-box:first-child { text-align: center; }
+    .plan-specifications { font-size: 100%; }
+    .form-box { margin:  5px 0;}
+    input[type=text], 
+    input[type=email], 
+    textarea, 
+    select { font-size: 90%; }
+    .section-intro { width: 100%; margin: 5px;}
+    .logo {
+        width: 20%;                   
+        margin: 20px 0 0 40%;
+    }
+    .sticky-nav .logo-black { 
+        width: 70px; 
+        height: auto;
+        margin: 0 43%;
+        margin-top: 12px;
+    }
+    .sticky-nav .main-nav { margin: 20px auto 16px auto; }
+    .contact-form { width: 100%; }
+}
+
+/* DEVICES WHICH WIDTH 0px TO 480px */
+@media only screen and (max-width:480px){
+    section { padding: 25px 0; }
+    .contact-form { width: 100%; }
+}
+
+
+                                                                                    /*
+                                                                                    Suvam Das
+                                                                                    suvamdas27@gmail.com
+                                                                                    https://www.instagram.com/mesuvam
+                                                                                    https://www.linkedin.com/in/suvam-das-81b3b2154/
+                                                                                    https://www.facebook.com/chondro.bindu.chand.1997/
+                                                                                    */

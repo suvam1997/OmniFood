@@ -1,0 +1,705 @@
+/*----------------------------------------------------------------------------*/
+/*                                BASIC CODE                                  */
+/*----------------------------------------------------------------------------*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                            REUSABLE COMPONENTS                              */
+/*-----------------------------------------------------------------------------*/
+
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.clear-fix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/*---------------HEADING----------------*/
+
+h1, h2, h3 {
+    font-weight: 300;
+    text-transform: uppercase;  /* To upporcase the text */
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 240%;
+    word-spacing: 4px;
+    letter-spacing: 1px;        /* To specify amount of space between letters */
+}
+
+h2 {
+    font-size: 180%;  /* Other properties are same with 'h1' so I groupped h1 and h2 for those in the reusable part */
+    text-align: center;
+    word-spacing: 2px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h2:after {         /* little orange dash will appear after h2 */
+    display: block;
+    content: "";
+    height: 2px;
+    width: 100px;
+    background-color: #e67e22;
+    margin: 30px auto 0 auto;
+}
+
+h3 {      
+    font-size: 110%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+h3:after {         /* little orange dash will appear after h2 */
+    display: block;
+    content: "";
+    height: 2px;
+    width: 20px;
+    background-color: #e67e22;
+    margin: 10px auto 0 auto;
+}
+
+.section-intro {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+}
+
+
+/*---------------BUTTONS----------------*/
+
+/*
+Link elements (<a>) are inline elements so we can not have padding and margin so the buttons will be less attractive. To overcome this problem and make a nice button out of it we will make this link elements (inline elements) to inline-block elements defining "display: inline-block;".
+Also buttons have 4 states => i. link: normal and unvisited button;
+                             ii. visited: a link/button the user has visited; 
+                            iii. hover: a link/button the when the user mouses over it and
+                             iv. active: a link/button the moment it is clicked. 
+
+I have made two buttons, one of this is solid (btn-solid) and the other one (btn-ghost) is transparent. Both has same margin, padding, text-declaration, border-radious and border.
+States=> 1. link => Normally btn-solid is solid #e67e22 in color and it's text color is white and for btn-ghost it is normally                         transparent and it has #e67e22 colored text and border. 
+         2. visited => When the buttons has clicked by the user the clicked buttons remains same as normal state.
+         3. hover => When user puts the cursor on top of btn-solid button it's background and border color becomes #cf6d17. 
+                     In case of btn-ghost, when user hover the cursor over it, it's background becomes solid #cf6d17. It's border color also changes to #cf6d17.
+         4. active => When the user clicks these buttons it's border becomes thicker.
+I have used https://flatuicolors.com/ to choose the button of the color (#e67e22) 
+and https://www.0to255.com/ to get shaded color (#cf6d17). 
+
+*/
+
+.btns, input[type=submit] {
+    display: inline-block;  /* converting the element to inline-block element */
+    padding: 10px 30px;     /* now we can add padding and margin */
+    text-decoration: none;  /* to remove underline */
+    border-radius: 200px;   /*to make roundish left and right side*/
+    border: 1px solid #e67e22;
+    margin: 0 10px;
+    -webkit-transition: background-color 0.3s, border 0.3s, color 0.3s;
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+.btn-solid:link, .btn-solid:visited,
+input[type=submit] {
+    background-color: #e67e22;  /* setting background color of the button btn-solid */
+    color: #fff;                /* setting text color of the button btn-solid */
+}
+
+.btn-solid:hover, .btn-solid:active,
+input[type=submit]:hover, input[type=submit]:active {
+    background-color: #cf6d17;
+    border: 1px solid #cf6d17;
+}
+
+.btn-ghost:link, .btn-ghost:visited {
+    background-color: transparent;  /* setting background color as transparent of the button btn-ghost */
+    color: #e67e22;                 /* setting text color of the button btn-ghost */
+}
+
+.btn-ghost:hover, .btn-ghost:active {
+    color: #fff;
+    background-color: #e67e22;
+}
+
+
+/*---------------ICONS----------------*/
+
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #e67e22;
+    font-size: 120%;
+    margin-right: 10px;
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+
+
+/*------------LOGO ANIMATION------------*/
+
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                             HEADER COMPONENTS                               */
+/*-----------------------------------------------------------------------------*/
+
+
+header {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(images/hero.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/hero.jpg); /* using linear gradient */
+    background-size: cover;      /* to see complete image not zoomed */
+    background-position: center; /* to center the background */
+    height: 100vh;               /* total view port view */
+    background-attachment: fixed;  /* for "scroll but fix effect" */
+}
+
+
+.hero-text-box {              /* we will not use fluid grid for this box because we want to mak this box absolute positioned */
+    position: absolute;                /* to make absolute positioned */
+    width: 1140px;                     /* to set the width of the text-box on top of hero image that means header */
+    top: 50%;                          /* 50% from top */
+    left: 50%;                         /* 50% from left */
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);  /* setting the top and left to 50% does'nt make the box centered so we transformed it */
+}
+
+.hero-text-box .btn-solid {
+    margin-left: 0;
+} 
+
+/*---------------NAVIGATION BAR----------------*/
+
+/* NORMAL-NAV */
+
+.logo {
+    float: left; 
+    height: auto; 
+    width: 90px;
+    margin-top: 20px;
+    -webkit-animation: rotation 0.4s linear 2;
+    animation: rotation 0.4s linear 2;
+}
+
+.logo-black { 
+    display: none; 
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link, .main-nav li a:visited {
+    padding: 8px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-bottom 0.2s;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover, .main-nav li a:active {
+    border-bottom: 2px solid #e67e22
+}
+
+/* STICKY-NAV */
+
+.sticky-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    -webkit-box-shadow: 0 2px 2px #ededed;
+    box-shadow: 0 2px 2px #ededed;
+    z-index: 9999;
+}
+
+.sticky-nav .logo { 
+    display: none; 
+}
+
+.sticky-nav .logo-black { 
+    display: block;
+    float: left; 
+    width: 50px; 
+    height: auto;
+    margin: 5px;
+    -webkit-animation: rotation 0.4s linear 2;
+    animation: rotation 0.4s linear 2;
+}
+
+.sticky-nav .main-nav {
+    margin-top: 22px;
+}
+
+.sticky-nav .main-nav li a:link, 
+.sticky-nav .main-nav li a:visited {
+    padding-bottom: 16px;
+    color: #555;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                             FEATURES SECTION                                */
+/*-----------------------------------------------------------------------------*/
+
+
+.section-intro {
+    margin-bottom: 4%;
+}
+
+.section-box {
+    padding: 1%;
+}
+
+.feature-icon {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: auto;            /* https://codepen.io/sosuke/pen/Pjoqqp is filter generating website */
+    -webkit-filter: invert(67%) sepia(52%) saturate(4748%) hue-rotate(351deg) brightness(90%) contrast(85%);
+    filter: invert(67%) sepia(52%) saturate(4748%) hue-rotate(351deg) brightness(90%) contrast(85%);
+} 
+
+.feature-info {
+    font-size: 90%;
+    line-height: 145%;
+    text-align: center;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                             SHOWCASE SECTION                                */
+/*-----------------------------------------------------------------------------*/
+
+
+.showcase-section {
+    padding: 0;
+}
+
+.meals-showcase {
+    list-style: none;
+    width: 100%;
+}
+
+.meals-showcase li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.showcase-image {
+    overflow: hidden;
+    background-color: #000;
+}
+
+ .showcase-image img {
+     opacity: 0.7;
+     width: 100%;
+     height: auto;
+     -webkit-transform: scale(1.13);
+     transform: scale(1.13);
+     -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+     transition: opacity 0.5s, -webkit-transform 0.5s;
+     transition: transform 0.5s, opacity 0.5s;
+     transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+ .showcase-image img:hover {
+     opacity: 1;
+     -webkit-transform: scale(1.30);
+     transform: scale(1.30);
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                           HOW IT WORKS SECTION                              */
+/*-----------------------------------------------------------------------------*/
+
+
+.hiw-section {
+    background-color: #f4f4f4;
+}
+
+.step-box:first-child {
+    text-align: right;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+.step-box:last-child {
+    padding-left: 3%;
+    margin-top: 5%;
+}
+
+.phone-screen {
+    width: 40%;
+}
+
+.steps {
+    margin-bottom: 12%;
+}
+
+.steps div {
+    display: inline-block;
+    color: #e67e22;
+    font-size: 150%;
+    border: 2px solid #e67e22;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 7px;
+    float: left;
+    margin-right: 25px;
+}
+
+.steps p {
+    line-height: 25px;
+}
+
+.button-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 2%;
+}
+
+.steps:last-of-type {
+    margin-bottom: 15%;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                              CITIES SECTION                                 */
+/*-----------------------------------------------------------------------------*/
+
+
+.city-image {
+    width: 100%;
+    height: auto;
+}
+
+.city-feature {
+    margin-bottom: 10px;
+}
+
+.city-feature a {
+    color: #e67e22;
+    text-decoration: none;
+}
+
+.city-feature a:hover {
+    color: #555;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                           TESTINOMIALS SECTION                              */
+/*-----------------------------------------------------------------------------*/
+
+
+.testimonials-section {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url(images/back-customers.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(images/back-customers.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    margin-top: 40px;
+    position: relative;
+    
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+cite {
+    display: block;
+    margin-top: 25px;
+    font-size: 90%;
+}
+
+cite img {
+    height: 45px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                              SIGNUP SECTION                                 */
+/*-----------------------------------------------------------------------------*/
+
+
+.signup-section {
+    background-color: #f4f4f4;
+}
+
+.signup-box {
+    background-color: #fff;
+    width: 90%;  /* 90% of the actual col */
+    margin: 0 5%; /* we have left 10% so,10/2=5 */
+    border-radius: 5px;
+    -webkit-box-shadow: 5px 5px 5px #ebebeb;
+    box-shadow: 5px 5px 5px #ebebeb; /* "box-shadow: x-position y-position blur-amount color;" */
+}
+
+.signup-box h3:after {
+    height: 0;
+}
+
+.signup-box h3 {
+    text-align: left;
+    margin-top: 0;
+}
+
+.signup-box div {
+    padding: 15px;
+    border-bottom: 1px solid #ebe7e7;
+}
+
+.plan-specifications {
+    list-style: none;
+}
+
+.plan-price {
+    font-size: 300%;
+    font-weight: 100;
+    color: #e67e22;
+}
+
+span {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.price-per-meal {
+    font-size: 80%;
+    margin-top: 15px;
+}
+
+.plan-specifications li {
+    margin-bottom: 10px;
+}
+
+.signup-box div:last-child {
+    text-align: center;
+    border-bottom: 0 solid #ebe7e7;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                             CONTACKT SECTION                                */
+/*-----------------------------------------------------------------------------*/
+
+
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+input[type=text],
+input[type=email], textarea, select {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type=checkbox] {
+    margin-right: 5px;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                              FOOTER SECTION                                 */
+/*-----------------------------------------------------------------------------*/
+
+
+footer {
+    background-color: #333;
+    color: #777;
+    font-size: 80%;
+    padding: 2% 0;
+}
+
+
+footer p {
+    text-align: center;
+    margin: 15px;
+}
+
+.left-nav {
+    float: left;
+}
+
+.right-nav {
+    float: right;
+}
+
+.text-nav, .icon-nav {
+    list-style: none;
+}
+
+.text-nav li, .icon-nav li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.text-nav li a, .icon-nav li a {
+    text-decoration: none;
+    color: #777;
+}
+
+.icon-nav li a {
+    font-size: 160%;
+}
+
+.ion-social-facebook:hover {
+    color: #2f6fff;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.ion-social-instagram:hover {
+  background: -webkit-linear-gradient(blue, purple, red, yellow, yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    -webkit-transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s;
+}
+
+.right-nav .ion-social-twitter:hover {
+    color: #2fbfff;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.ion-social-googleplus:hover {
+    color: #f00;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+/*                                ANIMATION                                    */
+/*-----------------------------------------------------------------------------*/
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3
+{
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js--wp-4 {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated {
+    opacity: 1;
+}
+
+
+                                                                                    /*
+                                                                                    Suvam Das
+                                                                                    suvamdas27@gmail.com
+                                                                                    https://www.instagram.com/mesuvam
+                                                                                    https://www.linkedin.com/in/suvam-das-81b3b2154/
+                                                                                    https://www.facebook.com/chondro.bindu.chand.1997/
+                                                                                    */
