@@ -5,7 +5,7 @@ This webpage was created by Suvam Das for the course "Design and Develop a Kille
 
 ## Web Page preview: ##
 
- http://omnifood.ezyro.com/
+ https://suvam1997.github.io/OmniFood/
  
  ![OmniFood](https://user-images.githubusercontent.com/53318366/90470344-de2b0180-e138-11ea-8a92-36f6508350d3.gif)
 
